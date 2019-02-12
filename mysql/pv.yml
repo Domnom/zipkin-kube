@@ -1,0 +1,17 @@
+kind: PersistentVolume
+apiVersion: v1
+metadata:
+  name: zipkin-mysql-azure-file-pv
+spec:
+  capacity:
+    storage: 40Gi
+  accessModes:
+    - ReadWriteOnce
+  azureFile:
+    secretName: tabcorpadditionalstorage-storage-account-secret
+    shareName: zipkin-mysql
+    readOnly: false
+  mountOptions:
+    - dir_mode=0777
+    - file_mode=0777
+    - uid=1000
